@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "themafer",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-03-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "themafer"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "themafer-db",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "drizzle/migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      // Media uploaded via the admin (realisatie- en blogfoto's)
+      "binding": "MEDIA",
+      "bucket_name": "themafer-media"
+    },
+    {
+      // Next.js incremental cache (ISR)
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "themafer-cache"
+    }
+  ],
+  "images": {
+    "binding": "IMAGES"
+  }
+}
