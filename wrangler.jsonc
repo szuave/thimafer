@@ -25,13 +25,18 @@
       "migrations_dir": "drizzle/migrations"
     }
   ],
-  // R2 uitgeschakeld voor de demo (R2 nog niet geactiveerd op het account).
-  // Voor admin-fotouploads + ISR-cache later: activeer R2 in het dashboard,
-  // maak buckets "thimafer-media" + "thimafer-cache" en herstel dit blok:
-  // "r2_buckets": [
-  //   { "binding": "MEDIA", "bucket_name": "thimafer-media" },
-  //   { "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "thimafer-cache" }
-  // ],
+  "r2_buckets": [
+    {
+      // Media uploaded via the admin (realisatie- en blogfoto's)
+      "binding": "MEDIA",
+      "bucket_name": "thimafer-media"
+    },
+    {
+      // Next.js incremental cache (ISR)
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "thimafer-cache"
+    }
+  ],
   "images": {
     "binding": "IMAGES"
   }
